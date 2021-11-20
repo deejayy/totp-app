@@ -1,1 +1,13 @@
-<p>token works!</p>
+<div class="token">
+  <div class="handle"><mat-icon>drag_indicator</mat-icon></div>
+  <div class="content">
+    <div class="label">{{ token.label }}</div>
+    <div class="code"><app-token-code [visible]="token.visible" [code]="token.code"></app-token-code></div>
+  </div>
+  <div class="countdown">{{ token.timeLeft }}</div>
+  <div class="zoom"><mat-icon>search</mat-icon></div>
+  <div class="toggle-visibility" (click)="token.visible = !token.visible">
+    <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </div>
+  <div class="copy"><mat-icon>content_copy</mat-icon></div>
+</div>
