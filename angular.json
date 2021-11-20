@@ -108,6 +108,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "configPath": "jest.config.js",
             "no-cache": true,
             "reporters": []
           }

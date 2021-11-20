@@ -10,7 +10,7 @@ export class FeatureRouteGuard implements CanActivate {
 
   public canActivate(next: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (next && next.data && next.data.featureFlag) {
-      if (this.featureFlagService.getFeatureSetting(next.data.featureFlag)) {
+      if (this.featureFlagService.getFeatureSetting(next.data.featureFlag as string)) {
         return true;
       }
       this.router.navigate(['/']);
