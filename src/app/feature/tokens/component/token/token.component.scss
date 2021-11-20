@@ -3,4 +3,26 @@
 .token {
   display: flex;
   align-items: center;
+  margin: 16px;
+  border-radius: 20px;
+  padding: 20px 16px;
+  justify-content: space-between;
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .handle {
+    margin-right: 8px;
+    display: flex;
+  }
+
+  .countdown, .zoom, .toggle-visibility, .copy {
+    margin: 8px;
+    display: flex;
+  }
+
+  .content {
+    flex-grow: 1;
+  }
 }

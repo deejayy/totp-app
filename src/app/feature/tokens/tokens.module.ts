@@ -6,11 +6,12 @@ import { TokensRoutingModule } from './tokens-routing.module';
 import { TokenComponent } from './component/token/token.component';
 import { MatIconModule } from '@angular/material/icon';
 import { TokenCodeComponent } from './component/token-code/token-code.component';
+import { GradientPipe } from './pipe/gradient.pipe';
 
 export const MATERIAL = [MatIconModule];
 
 @NgModule({
-  declarations: [TokensComponent, TokenListComponent, TokenComponent, TokenCodeComponent],
+  declarations: [TokensComponent, TokenListComponent, TokenComponent, TokenCodeComponent, GradientPipe],
   imports: [...MATERIAL, CommonModule, TokensRoutingModule],
 })
 export class TokensModule {}

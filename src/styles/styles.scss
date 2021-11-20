@@ -43,3 +43,8 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: black;
   transition: background-color $autofill-transition-speed ease-in-out $autofill-transition-speed !important;
 }
+
+body {
+  background-color: $font-color;
+  padding: 1px;
+}

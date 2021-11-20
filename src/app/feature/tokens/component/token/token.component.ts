@@ -1,11 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-
-export interface Token {
-  label: string;
-  code: string;
-  timeLeft: number;
-  visible: boolean;
-}
+import { Token } from '@feature/tokens/model/token.model';
 
 @Component({
   selector: 'app-token',
@@ -15,6 +9,7 @@ export interface Token {
 })
 export class TokenComponent implements OnInit {
   @Input() public token: Token = {
+    key: 'Xa189237',
     code: '451236',
     label: 'tokenlabel',
     timeLeft: 18,

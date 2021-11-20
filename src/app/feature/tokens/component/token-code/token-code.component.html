@@ -1,1 +1,5 @@
-{{ visible ? code : '000 000' }}
+<div class="code">
+  <div class="char" [ngClass]="{ wide: idx % 3 === 2, novis: !visible }" *ngFor="let char of chars; let idx = index">
+    {{ visible ? char : '0' }}
+  </div>
+</div>

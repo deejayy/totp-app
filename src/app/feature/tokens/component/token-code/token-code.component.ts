@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-token-code',
@@ -6,7 +6,13 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
   styleUrls: ['./token-code.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TokenCodeComponent {
+export class TokenCodeComponent implements OnChanges {
   @Input() public visible: boolean = false;
   @Input() public code: string = '';
+
+  public chars: string[] = [];
+
+  public ngOnChanges() {
+    this.chars = this.code.split('');
+  }
 }
