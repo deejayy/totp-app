@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConfigurationService } from '@app/core/config/service/config.service';
+import { ConfigurationService } from '@core/config/service/config.service';
 
 @Injectable()
 export class FeatureFlagService {

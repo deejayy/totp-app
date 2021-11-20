@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { FeatureFlagService } from './feature-flag.service';
-import { ConfigurationService } from '@app/core/config/service/config.service';
+import { ConfigurationService } from '@core/config/service/config.service';
 
 const TEST_VALUE = 2;
 

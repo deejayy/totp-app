@@ -10,7 +10,6 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/src/setupJest.ts"],
   moduleDirectories: ["node_modules", "src"],
   moduleNameMapper: {
-    "@app/(.*)": "<rootDir>/src/app/$1",
     "@core/(.*)": "<rootDir>/src/app/core/$1",
     "@feature/(.*)": "<rootDir>/src/app/feature/$1",
     "@shared/(.*)": "<rootDir>/src/app/shared/$1",
