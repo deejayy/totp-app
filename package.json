@@ -1,5 +1,5 @@
 {
-  "name": "projex",
+  "name": "totp-app",
   "version": "4.0.0",
   "scripts": {
     "ng": "ng",
