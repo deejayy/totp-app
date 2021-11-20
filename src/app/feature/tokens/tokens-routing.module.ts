@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProjectListComponent } from './component/project-list/project-list.component';
+import { TokenListComponent } from './component/token-list/token-list.component';
 
 const subRoutes: Routes = [
   {
     path: '',
-    component: ProjectListComponent,
+    component: TokenListComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const subRoutes: Routes = [
   imports: [RouterModule.forChild(subRoutes)],
   exports: [RouterModule],
 })
-export class ProjectsRoutingModule {}
+export class TokensRoutingModule {}
