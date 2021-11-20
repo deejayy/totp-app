@@ -29,12 +29,12 @@ import { CoreModule } from './core/core.module';
     EffectsModule.forRoot(),
     ApiCallerModule,
     StoreDevtoolsModule.instrument({
-      name: 'Angular 10 Bootstrap',
+      name: 'TOTP App',
       maxAge: 200,
       logOnly: environment.production,
     }),
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'hu' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'en-US' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
