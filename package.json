@@ -33,7 +33,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@auth0/angular-jwt": "^5.0.2",
-    "@deejayy/api-caller": "file:../api-caller/dist/api-caller",
+    "@deejayy/api-caller": "^2.1.0",
     "@ngrx/effects": "^12.5.1",
     "@ngrx/store": "^12.5.1",
     "@ngrx/store-devtools": "^12.5.1",
