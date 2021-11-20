@@ -7,18 +7,19 @@
   border-radius: 20px;
   padding: 20px 16px;
   justify-content: space-between;
+  color: white;
 
   .label {
     font-size: 0.8rem;
   }
 
   .handle {
-    margin-right: 8px;
+    margin-right: 12px;
     display: flex;
   }
 
   .countdown, .zoom, .toggle-visibility, .copy {
-    margin: 8px;
+    margin: 12px;
     display: flex;
   }
 

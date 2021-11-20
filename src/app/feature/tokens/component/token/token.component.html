@@ -5,7 +5,6 @@
     <div class="code"><app-token-code [visible]="token.visible" [code]="token.code"></app-token-code></div>
   </div>
   <div class="countdown">{{ token.timeLeft }}</div>
-  <div class="zoom"><mat-icon>search</mat-icon></div>
   <div class="toggle-visibility" (click)="token.visible = !token.visible">
     <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>
   </div>

@@ -1,5 +1,5 @@
 <div class="code">
-  <div class="char" [ngClass]="{ wide: idx % 3 === 2, novis: !visible }" *ngFor="let char of chars; let idx = index">
-    {{ visible ? char : '0' }}
+  <div class="char" [ngClass]="{ wide: idx % (code.length / 2) === (code.length / 2) - 1, novis: !visible }" *ngFor="let char of chars; let idx = index">
+    {{ visible ? char : '-' }}
   </div>
 </div>
