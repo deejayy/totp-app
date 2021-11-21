@@ -1,1 +1,3 @@
-<app-token *ngFor="let token of tokens$ | async" [token]="token"></app-token>
+<div class="token-list">
+  <app-token *ngFor="let token of tokens$ | async" [token]="token"></app-token>
+</div>

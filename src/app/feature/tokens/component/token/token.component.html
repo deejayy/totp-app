@@ -5,24 +5,7 @@
     <div class="code"><app-token-code [visible]="token.visible" [code]="token.code"></app-token-code></div>
   </div>
   <div class="countdown">
-    <svg width="50" height="50" class="timer" [style.color]="token.timeLeft < 5 ? 'red' : 'white'">
-      <svg:circle cx="25" cy="5" r="3.5"></svg:circle>
-      <svg:circle cx="25" cy="5" r="3.5" [attr.transform]="'rotate(' + rotation + ', 25, 25)'"></svg:circle>
-      <svg:circle
-        class="dashed-circle"
-        cx="25"
-        cy="25"
-        r="20"
-        [attr.stroke-dasharray]="dashPosition + ' 500'"
-      ></svg:circle>
-      <svg:circle
-        class="cover-circle"
-        cx="25"
-        cy="25"
-        r="23.5"
-      ></svg:circle>
-      <svg:text x="25" y="30">{{ token.timeLeft }}</svg:text>
-    </svg>
+    <app-countdown [timeLeft]="token.timeLeft"></app-countdown>
   </div>
   <div class="toggle-visibility" (click)="token.visible = !token.visible">
     <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>

@@ -1,0 +1,27 @@
+@import 'app-theme.scss';
+
+.timer {
+  * {
+    fill: currentColor;
+    transition: all 1s linear;
+  }
+
+  text {
+    text-anchor: middle;
+    font-family: 'Roboto';
+    font-size: 15px;
+  }
+
+  .dashed-circle,
+  .cover-circle {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 7;
+    transform: rotate(-90deg);
+    transform-origin: 25px 25px;
+  }
+
+  .cover-circle {
+    stroke-width: 0.5;
+  }
+}
