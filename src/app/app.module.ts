@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 
+import { initStateFromLocalStorage as tokenStoreMetaReducer } from '@shared/module/token-store/store/token-store-meta.reducer';
+
 export const MATERIAL = [MatIconModule];
 
 @NgModule({
@@ -24,8 +26,10 @@ export const MATERIAL = [MatIconModule];
     CoreModule,
     AppRoutingModule,
     StoreModule.forRoot(
-      {},
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
+      {} as any,
       {
+        metaReducers: [tokenStoreMetaReducer],
         runtimeChecks: {
           strictStateImmutability: false,
         },

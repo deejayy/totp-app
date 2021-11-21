@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Token } from '@feature/tokens/model/token.model';
+import { TokenStoreFacade } from '@shared/module/token-store/store/token-store.facade';
 import { Observable, of } from 'rxjs';
 
 @Injectable()
@@ -42,7 +43,13 @@ export class TokenStoreService {
     },
   ]);
 
+  constructor(private tokenStoreFacade: TokenStoreFacade) {}
+
   public moveToken(from: number, to: number) {
     console.log('moving', { from, to });
+  }
+
+  public setTokens(tokens: Token[]) {
+    this.tokenStoreFacade.setTokens(tokens);
   }
 }

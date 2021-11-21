@@ -41,8 +41,6 @@ export class TokenListComponent {
     map(([tokens]) => tokens),
   );
 
-  private interval!: NodeJS.Timeout;
-
   public updateTokens = (manual: boolean = false) => {
     this.refresh$.next(manual);
   };
@@ -71,6 +69,10 @@ export class TokenListComponent {
 
   public freeze() {
     this.stop();
+  }
+
+  public add() {
+    this.tokenService.setTokens([]);
   }
 
   public copy(code: string) {
