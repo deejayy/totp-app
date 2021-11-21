@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Token } from '@feature/tokens/model/token.model';
 import { BehaviorSubject } from 'rxjs';
 
+import totp from 'totp-generator';
+
 @Component({
   selector: 'app-token-list',
   templateUrl: './token-list.component.html',
@@ -11,35 +13,35 @@ import { BehaviorSubject } from 'rxjs';
 export class TokenListComponent {
   public tokens$: BehaviorSubject<Token[]> = new BehaviorSubject<Token[]>([
     {
-      key: 'KNCU GUSF KRFU KWJR',
+      key: 'KNCUGUSFKRFUKWJR',
       code: '123456',
       label: 'amazon',
       timeLeft: 22,
       visible: false,
     },
     {
-      key: 'JBSW Y3DP EHPK 3PXP',
+      key: 'JBSWY3DPEHPK3PXP',
       code: '789456',
       label: 'google',
       timeLeft: 2,
       visible: false,
     },
     {
-      key: 'GEZD GNBV GY3T QOJK',
+      key: 'GEZDGNBVGY3TQOJK',
       code: '45678911',
       label: 'facebook',
       timeLeft: 0,
       visible: false,
     },
     {
-      key: 'D6RZ I4RO AUQK JNAA',
+      key: 'D6RZI4ROAUQKJNAA',
       code: '123978',
       label: 'discord',
       timeLeft: 15,
       visible: false,
     },
     {
-      key: 'QKYP N7W7 LNV4 3GAA',
+      key: 'QKYPN7W7LNV43GAA',
       code: '123978',
       label: 'paypal',
       timeLeft: 30,
@@ -50,7 +52,11 @@ export class TokenListComponent {
   constructor() {
     setInterval(() => {
       this.tokens$.next(
-        this.tokens$.getValue().map((token) => ({ ...token, timeLeft: token.timeLeft < 1 ? 30 : token.timeLeft - 1 })),
+        this.tokens$.getValue().map((token) => ({
+          ...token,
+          timeLeft: 30 - Math.round(new Date().getTime() / 1000) % 30,
+          code: totp(token.key).toString(),
+        })),
       );
     }, 1000);
   }
