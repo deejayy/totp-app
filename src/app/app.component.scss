@@ -1,26 +1,57 @@
 @import 'app-theme.scss';
 
 .header {
-  -webkit-app-region: drag;
   color: white;
-  background-color: rgba(255, 255, 255, 0.1);
-  height: 40px;
+  background-color: rgba(white, 0.1);
+  height: 23px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  user-select: none;
 
   .title {
-    flex-grow: 1;
+    -webkit-app-region: drag;
+    flex-grow: 8;
+    flex-basis: 0;
     text-align: center;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 23px;
   }
 
   .controls {
     display: flex;
-    align-items: center;
+    flex-basis: 0;
+    flex-grow: 1;
+
+    &.start {
+      justify-content: flex-start;
+    }
+
+    &.end {
+      justify-content: flex-end;
+    }
   }
 
   .close {
     display: flex;
-    padding: 8px
+    width: 45px;
+    height: 21px;
+    justify-content: center;
+    align-items: center;
+    transition: all 100ms;
+
+    &:hover {
+      background-color: rgba(232, 17, 35, 1);
+    }
+
+    &-icon {
+      font-size: 16px;
+      line-height: 16px;
+      height: 16px;
+      width: 16px;
+    }
   }
 }

@@ -8,6 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class AppComponent {
   public close() {
-    console.log('exit');
+    window.close();
   }
 }

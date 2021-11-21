@@ -8,4 +8,5 @@ export interface Token {
   period?: number;
   digits?: number;
   algorithm?: string;
+  color?: number;
 }
