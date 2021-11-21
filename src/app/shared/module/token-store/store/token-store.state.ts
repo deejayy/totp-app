@@ -1,4 +1,4 @@
-import { Token } from '@feature/tokens/model/token.model';
+import { Token } from '@shared/model/token.model';
 
 export interface TokenStoreState {
   tokens: Token[];

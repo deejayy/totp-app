@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Token } from '@feature/tokens/model/token.model';
+import { Token } from '@shared/model/token.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TokenStoreActions } from './token-store.actions';

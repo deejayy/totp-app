@@ -1,7 +1,7 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { DEFAULT_PERIOD, Token } from '@feature/tokens/model/token.model';
+import { DEFAULT_PERIOD, Token } from '@shared/model/token.model';
 import { TokenStoreService } from '@shared/module/token-store/service/token-store.service';
 import { BehaviorSubject, combineLatest, merge, Observable, timer } from 'rxjs';
 import { filter, map } from 'rxjs/operators';

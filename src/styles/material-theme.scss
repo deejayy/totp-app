@@ -24,9 +24,9 @@ $mat-app: (
     100: $black,
     200: $black,
     300: $black,
-    400: $white,
-    500: $white,
-    600: $white,
+    400: $black,
+    500: $black,
+    600: $black,
     700: $white,
     800: $white,
     900: $white,
@@ -73,7 +73,7 @@ $mat-app-warn: (
 $app-theme: mat-palette($mat-app);
 $app-accent: mat-palette($mat-app, A200, A100, A400);
 $app-warn: mat-palette($mat-app-warn, A200, A100, A400);
-$app-theme: mat-light-theme($app-theme, $app-accent, $app-warn);
+$app-theme: mat-dark-theme($app-theme, $app-accent, $app-warn);
 
 $custom-typography: mat-typography-config(
   $font-family: $theme-font,

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
-import { DEFAULT_PERIOD } from '@feature/tokens/model/token.model';
+import { DEFAULT_PERIOD } from '@shared/model/token.model';
 
 const DEFAULT_RADIUS = 20;
 const CIRC_MULTIPLIER = 2;

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Token } from '@feature/tokens/model/token.model';
+import { Token } from '@shared/model/token.model';
 
 @Component({
   selector: 'app-token',

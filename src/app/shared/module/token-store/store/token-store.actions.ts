@@ -1,5 +1,5 @@
 import { Payload } from '@core/model/payload';
-import { Token } from '@feature/tokens/model/token.model';
+import { Token } from '@shared/model/token.model';
 import { createAction, props } from '@ngrx/store';
 
 export class TokenStoreActions {

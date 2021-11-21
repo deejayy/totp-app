@@ -45,6 +45,6 @@ select:-webkit-autofill:focus {
 }
 
 body {
-  background-color: $font-color;
-  color: white;
+  background-color: $theme-background;
+  color: $font-color;
 }

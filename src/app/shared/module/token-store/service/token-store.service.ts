@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Token } from '@feature/tokens/model/token.model';
+import { Token } from '@shared/model/token.model';
 import { TokenStoreFacade } from '@shared/module/token-store/store/token-store.facade';
 import { Observable } from 'rxjs';
 
