@@ -4,4 +4,8 @@ export interface Token {
   code: string;
   timeLeft: number;
   visible: boolean;
+  clockSkew?: number;
+  period?: number;
+  digits?: number;
+  algorithm?: string;
 }
