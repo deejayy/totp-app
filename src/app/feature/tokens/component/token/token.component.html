@@ -10,5 +10,5 @@
   <div class="toggle-visibility" (click)="token.visible = !token.visible">
     <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>
   </div>
-  <div class="copy"><mat-icon>content_copy</mat-icon></div>
+  <div class="copy" (click)="copy.emit(token.code)"><mat-icon>content_copy</mat-icon></div>
 </div>

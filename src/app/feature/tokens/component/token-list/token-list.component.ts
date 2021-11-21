@@ -1,11 +1,11 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { DEFAULT_PERIOD, Token } from '@feature/tokens/model/token.model';
 import { BehaviorSubject } from 'rxjs';
 import totp from 'totp-generator';
 
 const MSEC_IN_SEC = 1000;
-const UDPATE_INTERVAL = 1000;
+const UDPATE_INTERVAL = 30000;
 
 @Component({
   selector: 'app-token-list',
@@ -14,6 +14,8 @@ const UDPATE_INTERVAL = 1000;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TokenListComponent {
+  @ViewChild('copyInput', { static: true, read: ElementRef }) public copyInput!: ElementRef;
+
   public tokens$: BehaviorSubject<Token[]> = new BehaviorSubject<Token[]>([
     {
       key: 'KNCUGUSFKRFUKWJR',
@@ -54,22 +56,25 @@ export class TokenListComponent {
 
   private interval!: NodeJS.Timeout;
 
+  public updateTokens = () => {
+    this.tokens$.next(
+      this.tokens$.getValue().map((token) => ({
+        ...token,
+        timeLeft:
+          (token.period || DEFAULT_PERIOD) -
+          (Math.round(new Date().getTime() / MSEC_IN_SEC) % (token.period || DEFAULT_PERIOD)),
+        code: totp(token.key).toString(),
+      })),
+    );
+  };
+
   constructor() {
     this.start();
   }
 
   private start() {
-    this.interval = setInterval(() => {
-      this.tokens$.next(
-        this.tokens$.getValue().map((token) => ({
-          ...token,
-          timeLeft:
-            (token.period || DEFAULT_PERIOD) -
-            (Math.round(new Date().getTime() / MSEC_IN_SEC) % (token.period || DEFAULT_PERIOD)),
-          code: totp(token.key).toString(),
-        })),
-      );
-    }, UDPATE_INTERVAL);
+    this.updateTokens();
+    this.interval = setInterval(this.updateTokens, UDPATE_INTERVAL);
   }
 
   private stop() {
@@ -86,5 +91,13 @@ export class TokenListComponent {
 
   public freeze() {
     this.stop();
+  }
+
+  public copy(code: string) {
+    const copyText = this.copyInput.nativeElement;
+    copyText.value = code;
+    copyText.select();
+    copyText.setSelectionRange(0, code.length);
+    navigator.clipboard.writeText(copyText.value as string);
   }
 }

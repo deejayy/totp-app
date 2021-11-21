@@ -1,3 +1,11 @@
 <div class="token-list" cdkDropList (cdkDropListDropped)="drop($event)">
-  <app-token *ngFor="let token of tokens$ | async" [token]="token" cdkDrag (cdkDragStarted)="freeze()" (cdkDragEnded)="unfreeze()"></app-token>
+  <app-token
+    *ngFor="let token of tokens$ | async"
+    [token]="token"
+    cdkDrag
+    (cdkDragStarted)="freeze()"
+    (cdkDragEnded)="unfreeze()"
+    (copy)="copy($event)"
+  ></app-token>
 </div>
+<div class="hidden-input"><input type="text" #copyInput></div>
