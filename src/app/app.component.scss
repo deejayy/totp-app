@@ -8,4 +8,19 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  .title {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+  }
+
+  .close {
+    display: flex;
+    padding: 8px
+  }
 }
