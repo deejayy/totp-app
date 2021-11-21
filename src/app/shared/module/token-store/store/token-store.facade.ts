@@ -23,4 +23,8 @@ export class TokenStoreFacade {
   public toggleVisibility(key: string) {
     this.store.dispatch(TokenStoreActions.toggleVisibility({ payload: { key } }));
   }
+
+  public addToken(token: Partial<Token>) {
+    this.store.dispatch(TokenStoreActions.addToken({ payload: token }));
+  }
 }

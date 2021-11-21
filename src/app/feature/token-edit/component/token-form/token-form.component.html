@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="form">
+<form [formGroup]="form" class="form" (submit)="save()">
   <h1>Add new token</h1>
   <mat-form-field class="field max" appearance="fill">
     <mat-label>Key</mat-label>
@@ -8,5 +8,6 @@
     <mat-label>Label</mat-label>
     <input matInput type="text" formControlName="label" />
   </mat-form-field>
-  <button mat-flat-button>Save</button>
+  <button class="submit" mat-flat-button type="submit">Save</button>
+  <button mat-button type="button" (click)="goBack()">Cancel</button>
 </form>

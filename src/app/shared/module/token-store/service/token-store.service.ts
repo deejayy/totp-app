@@ -60,4 +60,8 @@ export class TokenStoreService {
   public toggleVisibility(key: string) {
     this.tokenStoreFacade.toggleVisibility(key);
   }
+
+  public addToken(token: Partial<Token>) {
+    this.tokenStoreFacade.addToken(token);
+  }
 }

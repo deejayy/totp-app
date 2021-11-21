@@ -8,10 +8,10 @@
   <div class="handle" cdkDragHandle><mat-icon>drag_indicator</mat-icon></div>
   <div class="content">
     <div class="label">{{ token.label }}</div>
-    <div class="code"><app-token-code [visible]="token.visible" [code]="token.code"></app-token-code></div>
+    <div class="code"><app-token-code [visible]="token.visible || false" [code]="token.code || ''"></app-token-code></div>
   </div>
   <div class="countdown">
-    <app-countdown [timeLeft]="token.timeLeft"></app-countdown>
+    <app-countdown [timeLeft]="token.timeLeft || 0"></app-countdown>
   </div>
   <div class="toggle-visibility" (click)="toggle.emit(token.key)">
     <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>

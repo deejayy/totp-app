@@ -28,13 +28,21 @@ export class TokenListComponent {
     combineLatest([this.tokenService.tokens$, this.tick$, this.paused$]).pipe(
       filter(([, , paused]) => !paused),
       map(([tokens]) => {
-        return tokens.map((token) => ({
-          ...token,
-          timeLeft:
-            (token.period || DEFAULT_PERIOD) -
-            (Math.round(new Date().getTime() / MSEC_IN_SEC) % (token.period || DEFAULT_PERIOD)),
-          code: totp(token.key).toString(),
-        }));
+        return tokens?.map((token) => {
+          let code;
+          try {
+            code = totp(token.key).toString();
+          } catch (e) {
+            console.error(e);
+          }
+          return {
+            ...token,
+            timeLeft:
+              (token.period || DEFAULT_PERIOD) -
+              (Math.round(new Date().getTime() / MSEC_IN_SEC) % (token.period || DEFAULT_PERIOD)),
+            code,
+          };
+        }) || [];
       }),
     ),
     merge(this.tokenService.tokens$, this.tick$),

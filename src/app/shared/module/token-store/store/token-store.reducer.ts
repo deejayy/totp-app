@@ -13,6 +13,13 @@ const reducer = createReducer(
   produceOn(TokenStoreActions.moveTokens, (draft, action) => {
     moveItemInArray(draft.tokens, action.payload.from, action.payload.to);
   }),
+  produceOn(TokenStoreActions.addToken, (draft, action) => {
+    draft.tokens = draft.tokens || [];
+    draft.tokens.push({
+      key: action.payload.key || '',
+      label: action.payload.label || '',
+    });
+  }),
   produceOn(TokenStoreActions.toggleVisibility, (draft, action) => {
     draft.tokens = draft.tokens.map((token) => ({
       ...token,

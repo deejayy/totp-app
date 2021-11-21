@@ -3,9 +3,9 @@ export const DEFAULT_PERIOD = 30;
 export interface Token {
   key: string;
   label: string;
-  code: string;
-  timeLeft: number;
-  visible: boolean;
+  code?: string;
+  timeLeft?: number;
+  visible?: boolean;
   clockSkew?: number;
   period?: number;
   digits?: number;
