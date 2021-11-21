@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 import totp from 'totp-generator';
 
 const MSEC_IN_SEC = 1000;
-const UDPATE_INTERVAL = 30000;
+const UDPATE_INTERVAL = 1000;
+const UPDATE_EVERY = 5;
 
 @Component({
   selector: 'app-token-list',
@@ -56,16 +57,18 @@ export class TokenListComponent {
 
   private interval!: NodeJS.Timeout;
 
-  public updateTokens = () => {
-    this.tokens$.next(
-      this.tokens$.getValue().map((token) => ({
-        ...token,
-        timeLeft:
-          (token.period || DEFAULT_PERIOD) -
-          (Math.round(new Date().getTime() / MSEC_IN_SEC) % (token.period || DEFAULT_PERIOD)),
-        code: totp(token.key).toString(),
-      })),
-    );
+  public updateTokens = (manual?: boolean) => {
+    const tokens = this.tokens$.getValue().map((token) => ({
+      ...token,
+      timeLeft:
+        (token.period || DEFAULT_PERIOD) -
+        (Math.round(new Date().getTime() / MSEC_IN_SEC) % (token.period || DEFAULT_PERIOD)),
+      code: totp(token.key).toString(),
+    }));
+
+    if (manual || tokens.some((token) => token.timeLeft % UPDATE_EVERY === 0)) {
+      this.tokens$.next(tokens);
+    }
   };
 
   constructor() {
@@ -73,8 +76,8 @@ export class TokenListComponent {
   }
 
   private start() {
-    this.updateTokens();
-    this.interval = setInterval(this.updateTokens, UDPATE_INTERVAL);
+    this.updateTokens(true);
+    this.interval = setInterval(() => this.updateTokens(false), UDPATE_INTERVAL);
   }
 
   private stop() {

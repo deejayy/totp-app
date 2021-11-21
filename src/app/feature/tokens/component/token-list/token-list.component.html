@@ -2,10 +2,9 @@
   <app-token
     *ngFor="let token of tokens$ | async"
     [token]="token"
-    cdkDrag
-    (cdkDragStarted)="freeze()"
-    (cdkDragEnded)="unfreeze()"
     (copy)="copy($event)"
+    (freeze)="freeze()"
+    (unfreeze)="unfreeze()"
   ></app-token>
 </div>
 <div class="hidden-input"><input type="text" #copyInput></div>

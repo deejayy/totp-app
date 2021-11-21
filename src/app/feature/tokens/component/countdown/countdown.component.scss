@@ -1,27 +1,49 @@
 @import 'app-theme.scss';
 
+@keyframes elapse {
+  100% {
+    stroke-dashoffset: 128;
+  }
+}
+
+@keyframes rotateDot {
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .timer {
+  --timeleft: 0s;
+
   * {
     fill: currentColor;
-    transition: all 1s linear;
   }
 
   text {
     text-anchor: middle;
     font-family: 'Roboto';
     font-size: 15px;
+    content: var(--timeleft);
   }
 
   .dashed-circle,
   .cover-circle {
+    stroke-dasharray: 128 256;
     fill: none;
     stroke: currentColor;
     stroke-width: 7;
     transform: rotate(-90deg);
     transform-origin: 25px 25px;
+    animation: elapse var(--timeleft) linear;
   }
 
   .cover-circle {
+    stroke-dasharray: 0;
     stroke-width: 0.5;
+  }
+
+  .end-dot {
+    animation: rotateDot var(--timeleft) linear;
+    transform-origin: 25px 25px;
   }
 }

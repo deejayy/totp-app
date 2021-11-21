@@ -1,18 +1,13 @@
-<svg width="50" height="50" class="timer" [style.color]="timeLeft < 5 ? 'red' : 'white'">
-  <svg:circle cx="25" cy="5" r="3.5"></svg:circle>
-  <svg:circle cx="25" cy="5" r="3.5" [attr.transform]="'rotate(' + rotation + ', 25, 25)'"></svg:circle>
+<svg width="50" height="50" class="timer" #timer [style.color]="timeLeft <= 5 ? 'red' : 'white'">
+  <svg:circle cx="25" cy="5" r="3.5" class="start-dot"></svg:circle>
+  <svg:circle cx="25" cy="5" r="3.5" class="end-dot" [attr.transform]="'rotate(' + rotation + ')'"></svg:circle>
   <svg:circle
     class="dashed-circle"
     cx="25"
     cy="25"
     [attr.r]="radius"
-    [attr.stroke-dasharray]="dashPosition + ' 500'"
+    [attr.stroke-dashoffset]="128 - dashPosition"
   ></svg:circle>
-  <svg:circle
-    class="cover-circle"
-    cx="25"
-    cy="25"
-    r="23.5"
-  ></svg:circle>
-  <svg:text x="25" y="30">{{ timeLeft }}</svg:text>
+  <svg:circle class="cover-circle" cx="25" cy="25" r="23.5"></svg:circle>
+  <svg:text x="25" y="30"></svg:text>
 </svg>
