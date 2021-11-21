@@ -15,4 +15,8 @@ export class TokenStoreFacade {
   public setTokens(tokens: Token[]): void {
     this.store.dispatch(TokenStoreActions.setTokens({ payload: tokens }));
   }
+
+  public moveTokens(from: number, to: number) {
+    this.store.dispatch(TokenStoreActions.moveTokens({ payload: { from, to } }));
+  }
 }

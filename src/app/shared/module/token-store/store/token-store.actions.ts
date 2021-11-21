@@ -4,4 +4,5 @@ import { createAction, props } from '@ngrx/store';
 
 export class TokenStoreActions {
   public static setTokens = createAction('[TokenStore] Set tokens', props<Payload<Token[]>>());
+  public static moveTokens = createAction('[TokenStore] Move tokens', props<Payload<{ from: number; to: number }>>());
 }

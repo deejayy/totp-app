@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Token } from '@feature/tokens/model/token.model';
 import { TokenStoreFacade } from '@shared/module/token-store/store/token-store.facade';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class TokenStoreService {
-  public tokens$: Observable<Token[]> = of([
+  public tokens$: Observable<Token[]> = this.tokenStoreFacade.tokens$;
+
+  public tokens: Token[] = [
     {
       key: 'KNCUGUSFKRFUKWJR',
       code: '',
@@ -41,12 +43,14 @@ export class TokenStoreService {
       timeLeft: 0,
       visible: false,
     },
-  ]);
+  ];
 
-  constructor(private tokenStoreFacade: TokenStoreFacade) {}
+  constructor(private tokenStoreFacade: TokenStoreFacade) {
+    // this.setTokens(this.tokens);
+  }
 
   public moveToken(from: number, to: number) {
-    console.log('moving', { from, to });
+    this.tokenStoreFacade.moveTokens(from, to);
   }
 
   public setTokens(tokens: Token[]) {

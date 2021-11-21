@@ -2,7 +2,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { DEFAULT_PERIOD, Token } from '@feature/tokens/model/token.model';
 import { TokenStoreService } from '@shared/module/token-store/service/token-store.service';
-import { BehaviorSubject, combineLatest, Observable, timer } from 'rxjs';
+import { BehaviorSubject, combineLatest, merge, Observable, timer } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import totp from 'totp-generator';
 
@@ -19,11 +19,12 @@ const UPDATE_EVERY = 5;
 export class TokenListComponent {
   @ViewChild('copyInput', { static: true, read: ElementRef }) public copyInput!: ElementRef;
 
-  public refresh$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public paused$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+  private tick$ = timer(0, UDPATE_INTERVAL);
+
   public tokens$: Observable<Token[]> = combineLatest([
-    combineLatest([this.tokenService.tokens$, timer(0, UDPATE_INTERVAL), this.paused$]).pipe(
+    combineLatest([this.tokenService.tokens$, this.tick$, this.paused$]).pipe(
       filter(([, , paused]) => !paused),
       map(([tokens]) => {
         return tokens.map((token) => ({
@@ -35,15 +36,11 @@ export class TokenListComponent {
         }));
       }),
     ),
-    this.refresh$,
+    merge(this.tokenService.tokens$, this.tick$),
   ]).pipe(
-    filter(([tokens]) => tokens.some((token) => token.timeLeft % UPDATE_EVERY === 0)),
+    filter(([tokens, tick]) => tokens.some((token) => Array.isArray(tick) || token.timeLeft % UPDATE_EVERY === 0)),
     map(([tokens]) => tokens),
   );
-
-  public updateTokens = (manual: boolean = false) => {
-    this.refresh$.next(manual);
-  };
 
   constructor(private tokenService: TokenStoreService) {
     this.start();
@@ -51,7 +48,6 @@ export class TokenListComponent {
 
   private start() {
     this.paused$.next(false);
-    this.updateTokens(true);
   }
 
   private stop() {

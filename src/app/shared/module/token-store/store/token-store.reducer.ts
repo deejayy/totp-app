@@ -1,3 +1,4 @@
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { produceOn } from '@core/helper/produce-on';
 import { Action, createReducer } from '@ngrx/store';
 
@@ -8,6 +9,9 @@ const reducer = createReducer(
   tokenStoreInitialState,
   produceOn(TokenStoreActions.setTokens, (draft, action) => {
     draft.tokens = action.payload;
+  }),
+  produceOn(TokenStoreActions.moveTokens, (draft, action) => {
+    moveItemInArray(draft.tokens, action.payload.from, action.payload.to);
   }),
 );
 
