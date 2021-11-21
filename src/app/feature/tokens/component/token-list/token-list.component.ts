@@ -1,8 +1,11 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Token } from '@feature/tokens/model/token.model';
+import { DEFAULT_PERIOD, Token } from '@feature/tokens/model/token.model';
 import { BehaviorSubject } from 'rxjs';
-
 import totp from 'totp-generator';
+
+const MSEC_IN_SEC = 1000;
+const UDPATE_INTERVAL = 1000;
 
 @Component({
   selector: 'app-token-list',
@@ -49,15 +52,39 @@ export class TokenListComponent {
     },
   ]);
 
+  private interval!: NodeJS.Timeout;
+
   constructor() {
-    setInterval(() => {
+    this.start();
+  }
+
+  private start() {
+    this.interval = setInterval(() => {
       this.tokens$.next(
         this.tokens$.getValue().map((token) => ({
           ...token,
-          timeLeft: 30 - Math.round(new Date().getTime() / 1000) % 30,
+          timeLeft:
+            (token.period || DEFAULT_PERIOD) -
+            (Math.round(new Date().getTime() / MSEC_IN_SEC) % (token.period || DEFAULT_PERIOD)),
           code: totp(token.key).toString(),
         })),
       );
-    }, 1000);
+    }, UDPATE_INTERVAL);
+  }
+
+  private stop() {
+    clearInterval(this.interval);
+  }
+
+  public drop(event: CdkDragDrop<Token[]>) {
+    moveItemInArray(this.tokens$.getValue(), event.previousIndex, event.currentIndex);
+  }
+
+  public unfreeze() {
+    this.start();
+  }
+
+  public freeze() {
+    this.stop();
   }
 }

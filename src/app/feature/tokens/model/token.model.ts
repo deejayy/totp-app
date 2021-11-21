@@ -1,3 +1,5 @@
+export const DEFAULT_PERIOD = 30;
+
 export interface Token {
   key: string;
   label: string;

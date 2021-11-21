@@ -8,8 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { TokenCodeComponent } from './component/token-code/token-code.component';
 import { GradientPipe } from './pipe/gradient.pipe';
 import { CountdownComponent } from './component/countdown/countdown.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
-export const MATERIAL = [MatIconModule];
+export const MATERIAL = [MatIconModule, DragDropModule];
 
 @NgModule({
   declarations: [

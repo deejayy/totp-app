@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { DEFAULT_PERIOD } from '@feature/tokens/model/token.model';
 
-const DEFAULT_PERIOD = 30;
 const DEFAULT_RADIUS = 20;
 const CIRC_MULTIPLIER = 2;
 const FULL_CIRCLE = 360;
