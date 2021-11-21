@@ -2,8 +2,15 @@
 
 .token-list {
   padding: 1px;
+  padding-bottom: 64px;
 }
 
 .hidden-input {
   display: none;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
 }
