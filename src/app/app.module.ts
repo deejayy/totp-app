@@ -7,6 +7,7 @@ import { environment } from '@env/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TokenStoreModule } from '@shared/module/token-store/token-store.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ export const MATERIAL = [MatIconModule];
       maxAge: 200,
       logOnly: environment.production,
     }),
+    TokenStoreModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'en-US' }],
   bootstrap: [AppComponent],
