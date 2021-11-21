@@ -19,4 +19,8 @@ export class TokenStoreFacade {
   public moveTokens(from: number, to: number) {
     this.store.dispatch(TokenStoreActions.moveTokens({ payload: { from, to } }));
   }
+
+  public toggleVisibility(key: string) {
+    this.store.dispatch(TokenStoreActions.toggleVisibility({ payload: { key } }));
+  }
 }

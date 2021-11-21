@@ -68,7 +68,11 @@ export class TokenListComponent {
   }
 
   public add() {
-    this.tokenService.setTokens([]);
+    // this.tokenService.setTokens([]);
+  }
+
+  public toggle(key: string) {
+    this.tokenService.toggleVisibility(key);
   }
 
   public copy(code: string) {

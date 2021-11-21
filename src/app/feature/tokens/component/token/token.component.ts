@@ -18,4 +18,5 @@ export class TokenComponent {
   @Output() public copy: EventEmitter<string> = new EventEmitter<string>();
   @Output() public freeze: EventEmitter<void> = new EventEmitter<void>();
   @Output() public unfreeze: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
 }

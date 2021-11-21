@@ -13,6 +13,12 @@ const reducer = createReducer(
   produceOn(TokenStoreActions.moveTokens, (draft, action) => {
     moveItemInArray(draft.tokens, action.payload.from, action.payload.to);
   }),
+  produceOn(TokenStoreActions.toggleVisibility, (draft, action) => {
+    draft.tokens = draft.tokens.map((token) => ({
+      ...token,
+      visible: token.key === action.payload.key ? !token.visible : token.visible,
+    }));
+  }),
 );
 
 export const tokenstoreReducer = (state: TokenStoreState, action: Action): TokenStoreState => {

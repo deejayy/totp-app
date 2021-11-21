@@ -56,4 +56,8 @@ export class TokenStoreService {
   public setTokens(tokens: Token[]) {
     this.tokenStoreFacade.setTokens(tokens);
   }
+
+  public toggleVisibility(key: string) {
+    this.tokenStoreFacade.toggleVisibility(key);
+  }
 }

@@ -13,7 +13,7 @@
   <div class="countdown">
     <app-countdown [timeLeft]="token.timeLeft"></app-countdown>
   </div>
-  <div class="toggle-visibility" (click)="token.visible = !token.visible">
+  <div class="toggle-visibility" (click)="toggle.emit(token.key)">
     <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>
   </div>
   <div class="copy" (click)="copy.emit(token.code)"><mat-icon>content_copy</mat-icon></div>
