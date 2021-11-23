@@ -1,14 +1,30 @@
-<div class="token-list" cdkDropList (cdkDropListDropped)="drop($event)">
+<form [formGroup]="form" class="token-list" cdkDropList (cdkDropListDropped)="drop($event)">
   <app-token
-    *ngFor="let token of tokens$ | async"
+    *ngFor="let token of tokensDisplay$ | async"
     [token]="token"
+    [editing]="(editing$ | async) || false"
     (copy)="copy($event)"
     (freeze)="freeze()"
     (unfreeze)="unfreeze()"
     (toggle)="toggle($event)"
   ></app-token>
-</div>
+</form>
 <div class="hidden-input"><input type="text" #copyInput /></div>
-<button mat-fab color="primary" class="add-button" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+<div class="buttons">
+  <ng-container *ngIf="editing$ | async; else nonEditing">
+    <button mat-fab color="primary" class="button" (click)="cancelEdit()">
+      <mat-icon>clear</mat-icon>
+    </button>
+    <button mat-fab color="primary" class="button" (click)="save()">
+      <mat-icon>check</mat-icon>
+    </button>
+  </ng-container>
+  <ng-template #nonEditing>
+    <button mat-fab color="primary" class="button" (click)="edit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-fab color="primary" class="button" (click)="add()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-template>
+</div>

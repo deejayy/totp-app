@@ -15,8 +15,10 @@ export class TokenComponent {
     timeLeft: 18,
     visible: true,
   };
+  @Input() public editing: boolean = false;
   @Output() public copy: EventEmitter<string> = new EventEmitter<string>();
   @Output() public freeze: EventEmitter<void> = new EventEmitter<void>();
   @Output() public unfreeze: EventEmitter<void> = new EventEmitter<void>();
   @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public delete: EventEmitter<string> = new EventEmitter<string>();
 }

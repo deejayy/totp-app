@@ -9,8 +9,12 @@
   display: none;
 }
 
-.add-button {
+.buttons {
   position: fixed;
   bottom: 16px;
   right: 16px;
+
+  .button {
+    margin-left: 8px;
+  }
 }

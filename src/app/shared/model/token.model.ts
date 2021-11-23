@@ -1,14 +1,17 @@
+import { FormControl } from '@angular/forms';
+
 export const DEFAULT_PERIOD = 30;
 
 export interface Token {
   key: string;
   label: string;
   code?: string;
-  timeLeft?: number;
+  timeLeft: number;
   visible?: boolean;
   clockSkew?: number;
   period?: number;
   digits?: number;
+  control?: FormControl;
   algorithm?:
     | 'SHA-1'
     | 'SHA-224'

@@ -10,8 +10,11 @@ import { TokenCodeComponent } from './component/token-code/token-code.component'
 import { GradientPipe } from './pipe/gradient.pipe';
 import { CountdownComponent } from './component/countdown/countdown.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
-export const MATERIAL = [MatIconModule, DragDropModule, MatButtonModule];
+export const MATERIAL = [MatIconModule, DragDropModule, MatButtonModule, MatInputModule, MatFormFieldModule];
 
 @NgModule({
   declarations: [
@@ -22,6 +25,6 @@ export const MATERIAL = [MatIconModule, DragDropModule, MatButtonModule];
     GradientPipe,
     CountdownComponent,
   ],
-  imports: [...MATERIAL, CommonModule, TokensRoutingModule],
+  imports: [...MATERIAL, CommonModule, TokensRoutingModule, ReactiveFormsModule],
 })
 export class TokensModule {}

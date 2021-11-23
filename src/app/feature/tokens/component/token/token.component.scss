@@ -31,5 +31,21 @@
   .content {
     flex-grow: 1;
   }
+
+  .field {
+    width: 80%;
+    margin-bottom: -20px;
+    color: white;
+
+    ::ng-deep {
+      .mat-focused, .mat-form-field-label {
+        color: $font-color;
+      }
+
+      .mat-form-field-ripple {
+        background-color: $font-color;
+      }
+    }
+  }
 }
 

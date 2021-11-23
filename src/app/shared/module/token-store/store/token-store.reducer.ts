@@ -18,6 +18,7 @@ const reducer = createReducer(
     draft.tokens.push({
       key: action.payload.key || '',
       label: action.payload.label || '',
+      timeLeft: 0,
     });
   }),
   produceOn(TokenStoreActions.toggleVisibility, (draft, action) => {

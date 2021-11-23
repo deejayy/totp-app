@@ -6,15 +6,26 @@
   (cdkDragEnded)="unfreeze.emit()"
 >
   <div class="handle" cdkDragHandle><mat-icon>drag_indicator</mat-icon></div>
-  <div class="content">
-    <div class="label">{{ token.label }}</div>
-    <div class="code"><app-token-code [visible]="token.visible || false" [code]="token.code || ''"></app-token-code></div>
-  </div>
-  <div class="countdown">
-    <app-countdown [timeLeft]="token.timeLeft || 0"></app-countdown>
-  </div>
-  <div class="toggle-visibility" (click)="toggle.emit(token.key)">
-    <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>
-  </div>
-  <div class="copy" (click)="copy.emit(token.code)"><mat-icon>content_copy</mat-icon></div>
+  <ng-container *ngIf="editing; else nonEditing">
+    <mat-form-field color="primary" class="field">
+      <mat-label>{{ token.label }}</mat-label>
+      <input matInput class="input" type="text" [formControl]="$any(token.control)" />
+    </mat-form-field>
+    <div class="delete" (click)="delete.emit(token.code)"><mat-icon>delete</mat-icon></div>
+  </ng-container>
+  <ng-template #nonEditing>
+    <div class="content">
+      <div class="label">{{ token.label }}</div>
+      <div class="code">
+        <app-token-code [visible]="token.visible || false" [code]="token.code || ''"></app-token-code>
+      </div>
+    </div>
+    <div class="countdown">
+      <app-countdown [timeLeft]="token.timeLeft || 0"></app-countdown>
+    </div>
+    <div class="toggle-visibility" (click)="toggle.emit(token.key)">
+      <mat-icon>{{ token.visible ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </div>
+    <div class="copy" (click)="copy.emit(token.code)"><mat-icon>content_copy</mat-icon></div>
+  </ng-template>
 </div>
