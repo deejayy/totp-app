@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DEFAULT_PERIOD, Token } from '@shared/model/token.model';
 import { TokenStoreService } from '@shared/module/token-store/service/token-store.service';
@@ -59,7 +59,7 @@ export class TokenListComponent implements OnDestroy {
 
   public createFormControls = (tokens: Token[]): Token[] => {
     const cTokens = tokens.map((token) => ({ ...token, control: new FormControl(token.label) }));
-    this.form.controls.labels = new FormArray(cTokens.map((token) => token.control as AbstractControl));
+    this.form.controls.labels = new FormArray(cTokens.map((token) => token.control));
     return cTokens;
   };
 
