@@ -8,6 +8,9 @@
       "type": "image/png"
     }
   ],
+  "permissions": [
+    "clipboardWrite"
+  ],
   "start_url": "/?utm_source=launcher",
   "display": "standalone",
   "orientation": "portrait",
