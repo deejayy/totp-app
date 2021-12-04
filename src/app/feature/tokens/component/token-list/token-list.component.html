@@ -21,7 +21,7 @@
     </button>
   </ng-container>
   <ng-template #nonEditing>
-    <button mat-fab color="primary" class="button" (click)="edit()">
+    <button mat-fab color="primary" class="button" (click)="edit()" *ngIf="tokensExists$ | async">
       <mat-icon>edit</mat-icon>
     </button>
     <button mat-fab color="primary" class="button" (click)="add()">

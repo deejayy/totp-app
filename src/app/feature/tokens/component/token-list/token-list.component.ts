@@ -65,6 +65,7 @@ export class TokenListComponent implements OnDestroy {
 
   public tokens$: Observable<Token[]> = this.getTokens();
   public tokensDisplay$: BehaviorSubject<Token[]> = new BehaviorSubject<Token[]>([]);
+  public tokensExists$: Observable<boolean> = this.tokensDisplay$.pipe(map((tokens) => tokens.length > 0));
 
   constructor(private tokenService: TokenStoreService, private router: Router) {
     this.start();
@@ -118,8 +119,6 @@ export class TokenListComponent implements OnDestroy {
   }
 
   public edit() {
-    console.log(this.form.get('labels')?.value);
-
     this.paused$.next(true);
     this.editing$.next(true);
   }
