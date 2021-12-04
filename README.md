@@ -1,8 +1,10 @@
 # Timed one-time-password (TOTP) application
 
-Made with angular 12 and material.
+Made with Angular 12 and Material.
 
 Ready-to-use: https://totp.cv.co.hu
+
+Needs javascript and access to localStorage. Does not send any data to any server, everything is stored locally - which means, if you clear your browsing data or using in incognito, it will lose whatever tokens are added.
 
 ## Build yourself
 
