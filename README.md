@@ -4,7 +4,7 @@ Made with Angular 12 and Material.
 
 Ready-to-use: https://totp.cv.co.hu
 
-Needs javascript and access to localStorage. Does not send any data to any server, everything is stored locally - which means, if you clear your browsing data or using in incognito, it will lose whatever tokens are added.
+Needs javascript and access to localStorage. Does not send any data to any server, everything is stored locally - which means, if you clear your browsing data or use in incognito, it will lose whatever tokens were added, so be aware.
 
 ## Build yourself
 
