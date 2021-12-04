@@ -7,47 +7,7 @@ import { Observable } from 'rxjs';
 export class TokenStoreService {
   public tokens$: Observable<Token[]> = this.tokenStoreFacade.tokens$;
 
-  public tokens: Token[] = [
-    {
-      key: 'KNCUGUSFKRFUKWJR',
-      code: '',
-      label: 'amazon',
-      timeLeft: 0,
-      visible: false,
-    },
-    {
-      key: 'JBSWY3DPEHPK3PXP',
-      code: '',
-      label: 'google',
-      timeLeft: 0,
-      visible: false,
-    },
-    {
-      key: 'GEZDGNBVGY3TQOJK',
-      code: '',
-      label: 'facebook',
-      timeLeft: 0,
-      visible: false,
-    },
-    {
-      key: 'D6RZI4ROAUQKJNAA',
-      code: '',
-      label: 'discord',
-      timeLeft: 0,
-      visible: false,
-    },
-    {
-      key: 'QKYPN7W7LNV43GAA',
-      code: '',
-      label: 'paypal',
-      timeLeft: 0,
-      visible: false,
-    },
-  ];
-
-  constructor(private tokenStoreFacade: TokenStoreFacade) {
-    // this.setTokens(this.tokens);
-  }
+  constructor(private tokenStoreFacade: TokenStoreFacade) {}
 
   public moveToken(from: number, to: number) {
     this.tokenStoreFacade.moveTokens(from, to);
