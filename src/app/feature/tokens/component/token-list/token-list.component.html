@@ -3,6 +3,7 @@
     *ngFor="let token of tokensDisplay$ | async"
     [token]="token"
     [editing]="(editing$ | async) || false"
+    [form]="form"
     (copy)="copy($event)"
     (freeze)="freeze()"
     (unfreeze)="unfreeze()"

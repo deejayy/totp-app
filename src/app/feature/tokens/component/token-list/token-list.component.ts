@@ -75,7 +75,6 @@ export class TokenListComponent implements OnDestroy {
     const tokens$ = combineLatest([this.tokenService.tokens$, timer(0, UDPATE_INTERVAL)]).pipe(
       map(([tokens]) => tokens),
       map(this.generateCodes),
-      map(this.createFormControls),
     );
 
     const tick$ = combineLatest([
@@ -89,7 +88,7 @@ export class TokenListComponent implements OnDestroy {
 
     return tick$.pipe(
       filter(Boolean),
-      switchMap(() => tokens$.pipe(take(1))),
+      switchMap(() => tokens$.pipe(map(this.createFormControls), take(1))),
     );
   }
 
@@ -119,14 +118,15 @@ export class TokenListComponent implements OnDestroy {
   }
 
   public edit() {
-    console.log(this.form.value);
+    console.log(this.form.get('labels')?.value);
 
     this.paused$.next(true);
     this.editing$.next(true);
   }
 
   public save() {
-    console.log(this.form.value);
+    const labels: string[] = this.form.get('labels')?.value;
+    this.tokenService.updateTokens(labels.map((label) => ({ label })));
 
     this.paused$.next(false);
     this.editing$.next(false);

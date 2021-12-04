@@ -16,6 +16,10 @@ export class TokenStoreFacade {
     this.store.dispatch(TokenStoreActions.setTokens({ payload: tokens }));
   }
 
+  public updateTokens(tokens: { label: string }[]): void {
+    this.store.dispatch(TokenStoreActions.updateTokens({ payload: tokens }));
+  }
+
   public moveTokens(from: number, to: number) {
     this.store.dispatch(TokenStoreActions.moveTokens({ payload: { from, to } }));
   }

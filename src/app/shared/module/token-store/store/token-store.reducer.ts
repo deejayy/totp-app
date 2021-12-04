@@ -27,6 +27,14 @@ const reducer = createReducer(
       visible: token.key === action.payload.key ? !token.visible : token.visible,
     }));
   }),
+  produceOn(TokenStoreActions.updateTokens, (draft, action) => {
+    draft.tokens = draft.tokens
+      .map((token, idx) => {
+        token.label = action.payload[idx].label;
+        return token;
+      })
+      .filter((token) => token.label !== null);
+  }),
 );
 
 export const tokenstoreReducer = (state: TokenStoreState, action: Action): TokenStoreState => {

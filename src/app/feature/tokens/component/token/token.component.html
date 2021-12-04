@@ -4,16 +4,23 @@
   cdkDrag
   (cdkDragStarted)="freeze.emit()"
   (cdkDragEnded)="unfreeze.emit()"
+  [formGroup]="form"
 >
-  <div class="handle" cdkDragHandle><mat-icon>drag_indicator</mat-icon></div>
   <ng-container *ngIf="editing; else nonEditing">
-    <mat-form-field color="primary" class="field">
-      <mat-label>{{ token.label }}</mat-label>
-      <input matInput class="input" type="text" [formControl]="$any(token.control)" />
-    </mat-form-field>
-    <div class="delete" (click)="delete.emit(token.code)"><mat-icon>delete</mat-icon></div>
+    <ng-container *ngIf="token.control?.value !== null; else removed">
+      <mat-form-field color="primary" class="field">
+        <mat-label>{{ token.label }}</mat-label>
+        <input matInput class="input" type="text" [formControl]="$any(token.control)" />
+      </mat-form-field>
+      <div class="delete" (click)="remove()"><mat-icon>delete</mat-icon></div>
+    </ng-container>
+    <ng-template #removed>
+      Token removed
+      <div class="delete" (click)="undoRemove()"><mat-icon>undo</mat-icon></div>
+    </ng-template>
   </ng-container>
   <ng-template #nonEditing>
+    <div class="handle" cdkDragHandle><mat-icon>drag_indicator</mat-icon></div>
     <div class="content">
       <div class="label">{{ token.label }}</div>
       <div class="code">
