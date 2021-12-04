@@ -14,7 +14,12 @@ export class TokenStoreEffects {
   public setTokens$: Observable<void> = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(TokenStoreActions.setTokens, TokenStoreActions.moveTokens, TokenStoreActions.toggleVisibility),
+        ofType(
+          TokenStoreActions.setTokens,
+          TokenStoreActions.moveTokens,
+          TokenStoreActions.toggleVisibility,
+          TokenStoreActions.updateTokens,
+        ),
         withLatestFrom(this.store.select(TokenStoreSelectors.getTokens)),
         map(([, tokens]) => window.localStorage.setItem('tokens', JSON.stringify(tokens))),
       ),
