@@ -34,6 +34,7 @@
               "src/favicon.png",
               "src/favicon.svg",
               "src/manifest.json",
+              "src/package.json",
               "src/assets"
             ],
             "styles": [

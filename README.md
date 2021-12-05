@@ -1,8 +1,10 @@
-# Timed one-time-password (TOTP) application
+# TuFA, Timed one-time-password (TOTP) application
 
 Made with Angular 12 and Material.
 
 Ready-to-use: https://totp.cv.co.hu
+
+(you can put to your homescreen on android)
 
 Needs javascript and access to localStorage. Does not send any data to any server, everything is stored locally - which means, if you clear your browsing data or use in incognito, it will lose whatever tokens were added, so be aware.
 
@@ -14,6 +16,18 @@ cd totp-app
 npm i
 ng b
 ```
+
+## Node-webkit
+
+NW.js (formerly node-webkit) enables you to run web apps as desktop apps, similarly to electron, but almost zero-config. The built application contains the manifest file for nw.js to work.
+
+Copy ./dist/totp-app into some secure drive / folder you have and run the following:
+
+```bash
+nw --user-data-dir=./data totp-app
+```
+
+This will create the user data dir next to the app in a secure location and in the same time makes it portable. Create a batch file or script for shortcut.
 
 Preview:
 

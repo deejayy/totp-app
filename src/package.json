@@ -1,0 +1,15 @@
+{
+  "name": "totp-app",
+  "main": "index.html",
+  "single-instance": true,
+  "window": {
+    "width": 450,
+    "toolbar": false,
+    "title": "TuFA",
+    "icon": "favicon.ico",
+    "resizable": true,
+    "always-on-top": false,
+    "frame": false,
+    "transparent": false
+  }
+}

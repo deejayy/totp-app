@@ -16,6 +16,7 @@ export class TokenStoreEffects {
       this.actions$.pipe(
         ofType(
           TokenStoreActions.setTokens,
+          TokenStoreActions.addToken,
           TokenStoreActions.moveTokens,
           TokenStoreActions.toggleVisibility,
           TokenStoreActions.updateTokens,

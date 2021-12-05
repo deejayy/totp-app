@@ -1,10 +1,10 @@
 {
-  "short_name": "Totp-app",
-  "name": "Totp-app",
+  "short_name": "TuFA",
+  "name": "totp-app",
   "icons": [
     {
       "src": "/favicon.png",
-      "sizes": "512x512",
+      "sizes": "256x256",
       "type": "image/png"
     }
   ],

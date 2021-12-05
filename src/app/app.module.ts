@@ -38,7 +38,7 @@ export const MATERIAL = [MatIconModule];
     EffectsModule.forRoot(),
     ApiCallerModule,
     StoreDevtoolsModule.instrument({
-      name: 'TOTP App',
+      name: 'TuFA',
       maxAge: 200,
       logOnly: environment.production,
     }),
