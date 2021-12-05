@@ -2,7 +2,7 @@
 
 Made with Angular 12 and Material.
 
-Ready-to-use: https://totp.cv.co.hu
+Ready-to-use: https://tufa.cv.co.hu
 
 (you can put to your homescreen on android)
 
