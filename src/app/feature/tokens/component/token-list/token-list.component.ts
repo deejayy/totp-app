@@ -43,23 +43,23 @@ export class TokenListComponent implements OnDestroy {
   };
 
   public calculateTimeleft = (period?: number): number =>
-    (period || DEFAULT_PERIOD) - (Math.round(new Date().getTime() / MSEC_IN_SEC) % (period || DEFAULT_PERIOD));
+    (period ?? DEFAULT_PERIOD) - (Math.round(new Date().getTime() / MSEC_IN_SEC) % (period ?? DEFAULT_PERIOD));
 
   public generateCodes = (tokens: Token[]): Token[] => {
     return (
-      tokens?.map((token) => {
+      tokens.map((token) => {
         return {
           ...token,
           timeLeft: this.calculateTimeleft(token.period),
           code: this.generateTotp(token.key),
         };
-      }) || []
+      })
     );
   };
 
   public createFormControls = (tokens: Token[]): Token[] => {
     const cTokens = tokens.map((token) => ({ ...token, control: new FormControl(token.label) }));
-    this.form.controls.labels = new FormArray(cTokens.map((token) => token.control));
+    this.form.controls['labels'] = new FormArray(cTokens.map((token) => token.control));
     return cTokens;
   };
 
@@ -83,7 +83,7 @@ export class TokenListComponent implements OnDestroy {
       tokens$.pipe(filter((tokens) => tokens.some((token) => token.timeLeft % UPDATE_EVERY === 0))),
       this.paused$,
     ]).pipe(
-      filter(([dataChange, tick, paused]) => (dataChange || tick) && !paused),
+      filter(([dataChange, , paused]) => dataChange && !paused),
       startWith(true),
     );
 

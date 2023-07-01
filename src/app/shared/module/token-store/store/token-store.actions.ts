@@ -1,6 +1,9 @@
-import { Payload } from '@core/model/payload';
 import { Token } from '@shared/model/token.model';
 import { createAction, props } from '@ngrx/store';
+
+export interface Payload<T> {
+  payload: T;
+}
 
 export class TokenStoreActions {
   public static setTokens = createAction('[TokenStore] Set tokens', props<Payload<Token[]>>());

@@ -7,7 +7,7 @@ export interface Token {
   label: string | null;
   code?: string;
   timeLeft: number;
-  visible?: boolean;
+  visible: boolean;
   clockSkew?: number;
   period?: number;
   digits?: number;

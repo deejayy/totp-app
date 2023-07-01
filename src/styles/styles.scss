@@ -1,11 +1,18 @@
-@import 'app-theme.scss';
+@use 'sass:map';
+@import 'app-theme';
 
 body div {
   cursor: default;
 }
 
 a {
-  color: $font-color;
+  color: map.get($foreground-light, 'base');
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: map.get($foreground-dark, 'base');
+  }
 }
 
 * {
@@ -42,9 +49,4 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: black;
   transition: background-color $autofill-transition-speed ease-in-out $autofill-transition-speed !important;
-}
-
-body {
-  background-color: $theme-background;
-  color: $font-color;
 }

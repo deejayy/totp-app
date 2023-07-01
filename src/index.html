@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta lang="en-US" />
     <base href="/" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <meta content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" name="viewport" />
     <style>
       @keyframes fadeIn {
         0% {
@@ -52,14 +52,14 @@
         }
       }
     </style>
-    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.svg" />
-    <link rel="manifest" href="/manifest.json" />
+    <link href="/favicon.svg" rel="icon" type="image/x-icon" />
+    <link href="/favicon.svg" rel="shortcut icon" />
+    <link href="/manifest.json" rel="manifest" />
   </head>
 
-  <body>
+  <body class="mat-typography mat-app-background">
     <app-root>
-      <div id="spinner" hidden>
+      <div hidden id="spinner">
         <div>Loading...</div>
       </div>
     </app-root>

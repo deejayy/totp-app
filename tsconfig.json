@@ -4,7 +4,19 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
     "strict": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": false,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -15,17 +27,16 @@
     "importHelpers": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "target": "es2017",
-    "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "types": ["node", "jest"],
+    "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@core/*": ["src/app/core/*"],
-      "@feature/*": ["src/app/feature/*"],
+      "@env/*": ["src/environments/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@env/*": ["src/environments/*"]
+      "@feature/*": ["src/app/feature/*"]
     }
   },
   "angularCompilerOptions": {

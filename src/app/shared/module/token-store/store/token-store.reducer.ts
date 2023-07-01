@@ -1,5 +1,5 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { produceOn } from '@core/helper/produce-on';
+import { produceOn } from '@shared/helper/produce-on';
 import { Action, createReducer } from '@ngrx/store';
 
 import { TokenStoreActions } from './token-store.actions';
@@ -19,6 +19,7 @@ const reducer = createReducer(
       key: action.payload.key || '',
       label: action.payload.label || '',
       timeLeft: 0,
+      visible: true,
     });
   }),
   produceOn(TokenStoreActions.toggleVisibility, (draft, action) => {
@@ -30,7 +31,7 @@ const reducer = createReducer(
   produceOn(TokenStoreActions.updateTokens, (draft, action) => {
     draft.tokens = draft.tokens
       .map((token, idx) => {
-        token.label = action.payload[idx].label;
+        token.label = action.payload[idx]?.label ?? '';
         return token;
       })
       .filter((token) => token.label !== null);
