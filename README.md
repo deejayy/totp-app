@@ -1,6 +1,6 @@
 # TuFA, Timed one-time-password (TOTP) application
 
-Made with Angular 12 and Material.
+Made with Angular 16 and Material.
 
 Ready-to-use: https://tufa.cv.co.hu
 
