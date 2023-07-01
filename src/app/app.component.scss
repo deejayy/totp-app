@@ -1,12 +1,21 @@
 @import 'app-theme';
 
+$header-height: 28px;
+
+.run {
+  height: calc(100vh - #{$header-height});
+  overflow: auto;
+}
+
 .header {
+  position: sticky;
+  top: 0;
   color: white;
-  background-color: rgba(white, 0.1);
-  height: 23px;
+  background-color: rgba(64, 64, 64, 100%);
+  height: $header-height;
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   user-select: none;
 
   .title {
@@ -18,7 +27,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 23px;
   }
 
   .controls {
@@ -38,7 +46,7 @@
   .close {
     display: flex;
     width: 45px;
-    height: 21px;
+    height: $header-height;
     justify-content: center;
     align-items: center;
     transition: all 100ms;
@@ -46,7 +54,7 @@
 
     &:hover {
       color: rgba(white, 1);
-      background-color: rgba(232, 17, 35, 1);
+      background-color: rgba(232, 17, 35, 100%);
     }
 
     &-icon {

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { environment } from '@env/environment';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const nw: any;
@@ -11,7 +12,7 @@ declare const nw: any;
 })
 export class AppComponent {
   // eslint-disable-next-line no-underscore-dangle
-  public isNwjsRunning: boolean = typeof nw === 'object';
+  public isNwjsRunning: boolean = typeof nw === 'object' || !environment.production;
 
   public close() {
     window.close();
